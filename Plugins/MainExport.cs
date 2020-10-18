@@ -19,7 +19,7 @@ namespace BH3rdGacha
             Description = "水银抽卡机",
             DeveloperKey = "ABC123",
             Name = "崩坏三图片抽卡",
-            Version = new Version(1, 0, 0, 0),
+            Version = new Version(1, 4, 0),
             SDKVersion = 3,
             PackageId = "me.luohuaming.BH3Gacha",
         };

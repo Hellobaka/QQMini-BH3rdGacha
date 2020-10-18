@@ -45,6 +45,7 @@ namespace TEST
             BH3rdGacha.SQLHelper.AddItem2Repositories(ls, 891787846, 863450594);
             sw.Stop();
             Console.WriteLine("加入仓库耗时：" + sw.ElapsedMilliseconds + "ms");
+            
             Console.ReadKey();
 
         }

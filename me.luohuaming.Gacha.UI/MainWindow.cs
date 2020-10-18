@@ -38,26 +38,26 @@ namespace Gacha.UI
                 listBox_Group.Items.Add(MainSave.AppConfig.Object["群控"][$"Item{i}"].GetValueOrDefault("0"));
             }
             checkBox1.Checked = (MainSave.AppConfig.Object["接口"]["Private"]
-                .GetValueOrDefault("0") == "1") ? true : false;
+                .GetValueOrDefault("0") == "1");
             checkBox2.Checked = (MainSave.AppConfig.Object["接口"]["Group"]
-                .GetValueOrDefault("0") == "1") ? true : false;
+                .GetValueOrDefault("0") == "1");
 
             checkBox_JZABaodi.Checked = (MainSave.AppConfig.Object["详情"]["A_Baodi"]
-                .GetValueOrDefault("1") == "1") ? true : false;
+                .GetValueOrDefault("1") == "1");
             checkBox_JZAAt.Checked = (MainSave.AppConfig.Object["详情"]["A_ResultAt"]
-                .GetValueOrDefault("0") == "1") ? true : false;
+                .GetValueOrDefault("0") == "1");
 
             checkBox_JingzhunBaodi.Checked = (MainSave.AppConfig.Object["详情"]["B_Baodi"]
-                .GetValueOrDefault("1") == "1") ? true : false;
+                .GetValueOrDefault("1") == "1");
             checkBox_JingzhunAt.Checked = (MainSave.AppConfig.Object["详情"]["B_ResultAt"]
-                .GetValueOrDefault("0") == "1") ? true : false;
+                .GetValueOrDefault("0") == "1");
 
             listBox_Group.SelectedIndex = (listBox_Group.Items.Count != 0) ? 0 : -1;
 
             checkBox_KuochongBaodi.Checked = (MainSave.AppConfig.Object["详情"]["Baodi"]
-                .GetValueOrDefault("1") == "1") ? true : false;
+                .GetValueOrDefault("1") == "1");
             checkBox_KuochongAt.Checked = (MainSave.AppConfig.Object["详情"]["ResultAt"]
-                .GetValueOrDefault("0") == "1") ? true : false;
+                .GetValueOrDefault("0") == "1");
             Init();
             PluginInfo appInfo = MainSave.AppInfo;
             label_NowVersion.Text = $"当前版本:{appInfo.Version}";
@@ -523,9 +523,6 @@ namespace Gacha.UI
             if (listBox_Group.SelectedIndex < 0) return;
             LastGroupChoice = listBox_Group.SelectedIndex;
             listBox_Admin.Items.Clear();
-            path = Path.Combine(MainSave.AppDirectory, "Config.MainSave.AppConfig");
-            MainSave.AppConfig = new IniConfig(path);
-            MainSave.AppConfig.Load();
             string groupid = listBox_Group.Items[listBox_Group.SelectedIndex].ToString();
             label16.Text = $"编辑群:{groupid} 群管中";
             int count = Convert.ToInt32(MainSave.AppConfig.Object[groupid]["Count"].GetValueOrDefault("0"));
@@ -1075,12 +1072,6 @@ namespace Gacha.UI
             {
                 MessageBox.Show($"拉取版本号失败\n错误信息:{e.Message}\n请稍后再试");
             }
-        }
-
-        private void 关于界面ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Aboutme fm = new Aboutme();
-            fm.Show();
         }
 
         private void 扩展设置ToolStripMenuItem_Click(object sender, EventArgs e)

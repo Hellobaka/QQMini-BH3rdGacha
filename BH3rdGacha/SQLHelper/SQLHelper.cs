@@ -349,10 +349,12 @@ namespace BH3rdGacha
         }
         public static void CreateDB()
         {
-            var db = GetInstance();
-            db.DbMaintenance.CreateDatabase();
-            db.CodeFirst.InitTables(typeof(UserData));
-            db.CodeFirst.InitTables(typeof(Repositories));
+            using (var db = GetInstance())
+            {
+                db.DbMaintenance.CreateDatabase();
+                db.CodeFirst.InitTables(typeof(UserData));
+                db.CodeFirst.InitTables(typeof(Repositories));
+            }
         }
     }
 }

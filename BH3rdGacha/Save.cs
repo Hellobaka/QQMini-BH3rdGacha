@@ -1,9 +1,6 @@
-﻿using BH3rdGacha.GachaHelper;
-using Native.Tool.IniConfig;
+﻿using Native.Tool.IniConfig;
 using QQMini.PluginSDK.Core;
 using QQMini.PluginSDK.Core.Model;
-using SaveInfos;
-using System.Collections.Generic;
 
 namespace BH3rdGacha
 {

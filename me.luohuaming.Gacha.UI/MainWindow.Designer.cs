@@ -37,7 +37,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox_KuochongBaodi = new System.Windows.Forms.CheckBox();
             this.checkBox_KuochongAt = new System.Windows.Forms.CheckBox();
-            this.pictureBox_KuoChong = new System.Windows.Forms.PictureBox();
             this.button_KuochongUpAPic = new System.Windows.Forms.Button();
             this.button_KuochongUpSPic = new System.Windows.Forms.Button();
             this.textBox_KuochongProbablity = new System.Windows.Forms.TextBox();
@@ -62,7 +61,6 @@
             this.button_JZAStigmataSub = new System.Windows.Forms.Button();
             this.button_JZAStigmataPlus = new System.Windows.Forms.Button();
             this.textBox_JZAStigmata = new System.Windows.Forms.TextBox();
-            this.pictureBox_JZA = new System.Windows.Forms.PictureBox();
             this.listBox_JZAStigmata = new System.Windows.Forms.ListBox();
             this.textBox_JZAProbablity = new System.Windows.Forms.TextBox();
             this.button_JZAGetProbablity = new System.Windows.Forms.Button();
@@ -85,7 +83,6 @@
             this.button_JingzhunStigmataSub = new System.Windows.Forms.Button();
             this.button_JingzhunStigmataPlus = new System.Windows.Forms.Button();
             this.textBox_JingzhunStigmata = new System.Windows.Forms.TextBox();
-            this.pictureBox_JingZhun = new System.Windows.Forms.PictureBox();
             this.listBox_JZBStigmata = new System.Windows.Forms.ListBox();
             this.textBox_JingzhunProbablity = new System.Windows.Forms.TextBox();
             this.button_JingzhunGetProbablity = new System.Windows.Forms.Button();
@@ -116,7 +113,6 @@
             this.button_BPSSub = new System.Windows.Forms.Button();
             this.button_BPSPlus = new System.Windows.Forms.Button();
             this.textBox_BPS = new System.Windows.Forms.TextBox();
-            this.pictureBox_BP = new System.Windows.Forms.PictureBox();
             this.button_Save = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -135,35 +131,36 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.自定义指令与回答ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.批量导入群列表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AbyssHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.扩展设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label_NowVersion = new System.Windows.Forms.Label();
             this.label_NewVersion = new System.Windows.Forms.Label();
             this.button_GetUpdate = new System.Windows.Forms.Button();
+            this.pictureBox_KuoChong = new System.Windows.Forms.PictureBox();
+            this.pictureBox_JZA = new System.Windows.Forms.PictureBox();
+            this.pictureBox_JingZhun = new System.Windows.Forms.PictureBox();
+            this.pictureBox_BP = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_KuoChong)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JZA)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JingZhun)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_BP)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_KuoChong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JZA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JingZhun)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_BP)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox_Result
@@ -275,15 +272,6 @@
             this.checkBox_KuochongAt.TabIndex = 0;
             this.checkBox_KuochongAt.Text = "出结果时at";
             this.checkBox_KuochongAt.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox_KuoChong
-            // 
-            this.pictureBox_KuoChong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_KuoChong.Location = new System.Drawing.Point(599, 10);
-            this.pictureBox_KuoChong.Name = "pictureBox_KuoChong";
-            this.pictureBox_KuoChong.Size = new System.Drawing.Size(169, 206);
-            this.pictureBox_KuoChong.TabIndex = 13;
-            this.pictureBox_KuoChong.TabStop = false;
             // 
             // button_KuochongUpAPic
             // 
@@ -534,15 +522,6 @@
             this.textBox_JZAStigmata.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_JZAStigmata_KeyDown);
             this.textBox_JZAStigmata.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_JZAStigmata_KeyPress);
             // 
-            // pictureBox_JZA
-            // 
-            this.pictureBox_JZA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_JZA.Location = new System.Drawing.Point(568, 9);
-            this.pictureBox_JZA.Name = "pictureBox_JZA";
-            this.pictureBox_JZA.Size = new System.Drawing.Size(169, 210);
-            this.pictureBox_JZA.TabIndex = 63;
-            this.pictureBox_JZA.TabStop = false;
-            // 
             // listBox_JZAStigmata
             // 
             this.listBox_JZAStigmata.FormattingEnabled = true;
@@ -773,15 +752,6 @@
             this.textBox_JingzhunStigmata.TabIndex = 39;
             this.textBox_JingzhunStigmata.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_JingzhunStigmata_KeyDown);
             this.textBox_JingzhunStigmata.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_JingzhunStigmata_KeyPress);
-            // 
-            // pictureBox_JingZhun
-            // 
-            this.pictureBox_JingZhun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_JingZhun.Location = new System.Drawing.Point(568, 9);
-            this.pictureBox_JingZhun.Name = "pictureBox_JingZhun";
-            this.pictureBox_JingZhun.Size = new System.Drawing.Size(169, 210);
-            this.pictureBox_JingZhun.TabIndex = 43;
-            this.pictureBox_JingZhun.TabStop = false;
             // 
             // listBox_JZBStigmata
             // 
@@ -1091,15 +1061,6 @@
             this.textBox_BPS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_BPS_KeyDown);
             this.textBox_BPS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_BPS_KeyPress);
             // 
-            // pictureBox_BP
-            // 
-            this.pictureBox_BP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_BP.Location = new System.Drawing.Point(620, 16);
-            this.pictureBox_BP.Name = "pictureBox_BP";
-            this.pictureBox_BP.Size = new System.Drawing.Size(151, 210);
-            this.pictureBox_BP.TabIndex = 44;
-            this.pictureBox_BP.TabStop = false;
-            // 
             // button_Save
             // 
             this.button_Save.Location = new System.Drawing.Point(716, 27);
@@ -1258,8 +1219,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.自定义指令与回答ToolStripMenuItem,
-            this.关于ToolStripMenuItem});
+            this.自定义指令与回答ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 25);
@@ -1270,7 +1230,6 @@
             // 
             this.自定义指令与回答ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.打开ToolStripMenuItem,
-            this.批量导入群列表ToolStripMenuItem,
             this.AbyssHelper,
             this.扩展设置ToolStripMenuItem});
             this.自定义指令与回答ToolStripMenuItem.Name = "自定义指令与回答ToolStripMenuItem";
@@ -1280,45 +1239,23 @@
             // 打开ToolStripMenuItem
             // 
             this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.打开ToolStripMenuItem.Text = "自定义指令与回答";
             this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
-            // 
-            // 批量导入群列表ToolStripMenuItem
-            // 
-            this.批量导入群列表ToolStripMenuItem.Name = "批量导入群列表ToolStripMenuItem";
-            this.批量导入群列表ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.批量导入群列表ToolStripMenuItem.Text = "批量导入群列表";
-            this.批量导入群列表ToolStripMenuItem.Click += new System.EventHandler(this.批量导入群列表ToolStripMenuItem_Click);
             // 
             // AbyssHelper
             // 
             this.AbyssHelper.Name = "AbyssHelper";
-            this.AbyssHelper.Size = new System.Drawing.Size(172, 22);
+            this.AbyssHelper.Size = new System.Drawing.Size(180, 22);
             this.AbyssHelper.Text = "深渊提醒助手";
             this.AbyssHelper.Click += new System.EventHandler(this.AbyssHelper_Click);
             // 
             // 扩展设置ToolStripMenuItem
             // 
             this.扩展设置ToolStripMenuItem.Name = "扩展设置ToolStripMenuItem";
-            this.扩展设置ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.扩展设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.扩展设置ToolStripMenuItem.Text = "扩展设置";
             this.扩展设置ToolStripMenuItem.Click += new System.EventHandler(this.扩展设置ToolStripMenuItem_Click);
-            // 
-            // 关于ToolStripMenuItem
-            // 
-            this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.关于界面ToolStripMenuItem});
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.关于ToolStripMenuItem.Text = "关于";
-            // 
-            // 关于界面ToolStripMenuItem
-            // 
-            this.关于界面ToolStripMenuItem.Name = "关于界面ToolStripMenuItem";
-            this.关于界面ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.关于界面ToolStripMenuItem.Text = "关于界面";
-            this.关于界面ToolStripMenuItem.Click += new System.EventHandler(this.关于界面ToolStripMenuItem_Click);
             // 
             // checkBox1
             // 
@@ -1369,6 +1306,42 @@
             this.button_GetUpdate.UseVisualStyleBackColor = true;
             this.button_GetUpdate.Click += new System.EventHandler(this.button_GetUpdate_Click);
             // 
+            // pictureBox_KuoChong
+            // 
+            this.pictureBox_KuoChong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_KuoChong.Location = new System.Drawing.Point(599, 10);
+            this.pictureBox_KuoChong.Name = "pictureBox_KuoChong";
+            this.pictureBox_KuoChong.Size = new System.Drawing.Size(169, 206);
+            this.pictureBox_KuoChong.TabIndex = 13;
+            this.pictureBox_KuoChong.TabStop = false;
+            // 
+            // pictureBox_JZA
+            // 
+            this.pictureBox_JZA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_JZA.Location = new System.Drawing.Point(568, 9);
+            this.pictureBox_JZA.Name = "pictureBox_JZA";
+            this.pictureBox_JZA.Size = new System.Drawing.Size(169, 210);
+            this.pictureBox_JZA.TabIndex = 63;
+            this.pictureBox_JZA.TabStop = false;
+            // 
+            // pictureBox_JingZhun
+            // 
+            this.pictureBox_JingZhun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_JingZhun.Location = new System.Drawing.Point(568, 9);
+            this.pictureBox_JingZhun.Name = "pictureBox_JingZhun";
+            this.pictureBox_JingZhun.Size = new System.Drawing.Size(169, 210);
+            this.pictureBox_JingZhun.TabIndex = 43;
+            this.pictureBox_JingZhun.TabStop = false;
+            // 
+            // pictureBox_BP
+            // 
+            this.pictureBox_BP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_BP.Location = new System.Drawing.Point(620, 16);
+            this.pictureBox_BP.Name = "pictureBox_BP";
+            this.pictureBox_BP.Size = new System.Drawing.Size(151, 210);
+            this.pictureBox_BP.TabIndex = 44;
+            this.pictureBox_BP.TabStop = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1401,17 +1374,14 @@
             this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_KuoChong)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JZA)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JingZhun)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -1421,13 +1391,16 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_BP)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_KuoChong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JZA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_JingZhun)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_BP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1500,7 +1473,6 @@
         private System.Windows.Forms.Button button_AdminPlus;
         private System.Windows.Forms.TextBox textBox_Admin;
         private System.Windows.Forms.ListBox listBox_Admin;
-        private System.Windows.Forms.ToolStripMenuItem 批量导入群列表ToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox checkBox_JZABaodi;
@@ -1548,8 +1520,6 @@
         private System.Windows.Forms.Label label_NowVersion;
         private System.Windows.Forms.Label label_NewVersion;
         private System.Windows.Forms.Button button_GetUpdate;
-        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 扩展设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AbyssHelper;
     }
