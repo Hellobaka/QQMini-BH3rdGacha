@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Timers;
-using System.Windows.Forms;
 
 namespace Gacha.UI
 {
@@ -28,8 +27,7 @@ namespace Gacha.UI
             if (abyssTimers.Count != 0) 
             { 
                 remindTimer.Start();
-                //TODO: Fix Implemented Methods
-                //MessageBox.Show("深渊提醒助手", $"定时生效,周期{remindTimer.Interval/1000}秒");
+                QMLog.CurrentApi.Info($"深渊提醒助手，定时生效,周期{remindTimer.Interval/1000}秒");
             }                
         }
 
@@ -61,8 +59,7 @@ namespace Gacha.UI
             }
             catch(Exception exc)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("深渊提醒助手", $"Timer出现错误，错误信息:{exc.Message}");
+                QMLog.CurrentApi.Info($"深渊提醒助手，Timer出现错误，错误信息:{exc.Message}");
             }
         }
     }

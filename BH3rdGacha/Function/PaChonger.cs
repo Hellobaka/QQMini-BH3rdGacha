@@ -10,8 +10,8 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Diagnostics;
 using Native.Tool.IniConfig;
-using System.Windows.Forms;
 using SaveInfos;
+using QQMini.PluginSDK.Core;
 
 namespace BH3rdGacha.GachaHelper
 {
@@ -71,7 +71,7 @@ namespace BH3rdGacha.GachaHelper
                     var Url = rootnode.SelectSingleNode("a[1]/div[2]/div[1]/div[1]");
 
                     url = $"https://www.bh3.com{url.Trim()}";
-                    string title = HttpUtility.HtmlDecode(Url.InnerText.Trim());                    
+                    string title = HttpUtility.HtmlDecode(Url.InnerText.Trim());
 
                     if (title.Contains(opiton))
                     {
@@ -86,7 +86,7 @@ namespace BH3rdGacha.GachaHelper
                                 rootnode = htmlDoc.DocumentNode.SelectSingleNode($"/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]");
                                 var count = rootnode.ChildNodes.Count;
                                 if (count > 60)
-                                {                                    
+                                {
                                     foreach (var item in rootnode.ChildNodes)
                                     {
                                         if (item.InnerText.Contains("精准补给A为"))
@@ -96,8 +96,8 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 2)
                                             {
                                                 ret_Text += $"精准A UP:{result[0]} {result[1]}\n";
-                                                UPAWeapon=result[0];
-                                                UPAStigmata=result[1];
+                                                UPAWeapon = result[0];
+                                                UPAStigmata = result[1];
                                             }
                                         }
                                         if (item.InnerText.Contains("精准补给B为"))
@@ -107,8 +107,8 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 2)
                                             {
                                                 ret_Text += $"精准B UP:{result[0]} {result[1]}\n";
-                                                UPBWeapon=result[0];
-                                                UPBStigmata=result[1];
+                                                UPBWeapon = result[0];
+                                                UPBStigmata = result[1];
                                             }
                                         }
                                         if (item.InnerText.Contains("【★4武器】"))
@@ -123,7 +123,7 @@ namespace BH3rdGacha.GachaHelper
                                                 {
                                                     List<string> WeaponList = GetItem(WeaponText.InnerText);
                                                     weaponcount += WeaponList.Count;
-                                                    
+
                                                     foreach (var item2 in WeaponList)
                                                     {
                                                         ret_Text += $"{item2}\n";
@@ -133,8 +133,7 @@ namespace BH3rdGacha.GachaHelper
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -148,17 +147,16 @@ namespace BH3rdGacha.GachaHelper
                                                 try
                                                 {
                                                     List<string> StigmataList = GetItem(StigmataText.InnerText);
-                                                    
+
                                                     foreach (var item2 in StigmataList)
                                                     {
-                                                        ret_Text += $"{item2}\n";                                                        
+                                                        ret_Text += $"{item2}\n";
                                                         JZStigmata.Add(item2);
                                                     }
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -175,8 +173,8 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 4)
                                             {
                                                 ret_Text += $"精准A UP:{result[0]} {result[1]}\n";
-                                                UPAWeapon=result[0];
-                                                UPAStigmata=result[1];
+                                                UPAWeapon = result[0];
+                                                UPAStigmata = result[1];
                                             }
                                         }
                                         if (item.InnerText.Contains("精准补给B为"))
@@ -186,8 +184,8 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 4)
                                             {
                                                 ret_Text += $"精准B UP:{result[2]} {result[3]}\n";
-                                                UPBWeapon=result[2];
-                                                UPBStigmata=result[3];
+                                                UPBWeapon = result[2];
+                                                UPBStigmata = result[3];
                                             }
                                         }
                                         if (item.InnerText.Contains("【★4武器】"))
@@ -198,8 +196,8 @@ namespace BH3rdGacha.GachaHelper
                                             {
                                                 try
                                                 {
-                                                    List<string> WeaponList = GetItem(WeaponText[1 + i]); 
-                                                    
+                                                    List<string> WeaponList = GetItem(WeaponText[1 + i]);
+
                                                     foreach (var item2 in WeaponList)
                                                     {
                                                         ret_Text += $"{item2}\n";
@@ -208,8 +206,7 @@ namespace BH3rdGacha.GachaHelper
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -222,7 +219,7 @@ namespace BH3rdGacha.GachaHelper
                                                 try
                                                 {
                                                     List<string> StigmataList = GetItem(StigmataText[1 + i]);
-                                                    
+
                                                     foreach (var item2 in StigmataList)
                                                     {
                                                         ret_Text += $"{item2}\n";
@@ -231,8 +228,7 @@ namespace BH3rdGacha.GachaHelper
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -249,8 +245,8 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 2)
                                             {
                                                 ret_Text += $"精准A UP:{result[0]} {result[1]}\n";
-                                                UPAWeapon=result[0];
-                                                UPAStigmata=result[1];
+                                                UPAWeapon = result[0];
+                                                UPAStigmata = result[1];
                                             }
                                         }
                                         if (item.InnerText.Contains("精准补给B为"))
@@ -260,9 +256,9 @@ namespace BH3rdGacha.GachaHelper
                                             if (result.Count == 2)
                                             {
                                                 ret_Text += $"精准B UP:{result[0]} {result[1]}\n";
-                                                UPBWeapon=result[0];
-                                                UPBStigmata=result[1];
-                                            }                                            
+                                                UPBWeapon = result[0];
+                                                UPBStigmata = result[1];
+                                            }
                                         }
                                         if (item.InnerText.Contains("【★4武器】"))
                                         {
@@ -272,8 +268,8 @@ namespace BH3rdGacha.GachaHelper
                                             {
                                                 try
                                                 {
-                                                    List<string> WeaponList = GetItem(WeaponText[1 + i]); 
-                                                    
+                                                    List<string> WeaponList = GetItem(WeaponText[1 + i]);
+
                                                     foreach (var item2 in WeaponList)
                                                     {
                                                         ret_Text += $"{item2}\n";
@@ -282,8 +278,7 @@ namespace BH3rdGacha.GachaHelper
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -296,7 +291,7 @@ namespace BH3rdGacha.GachaHelper
                                                 try
                                                 {
                                                     List<string> StigmataList = GetItem(StigmataText[1 + i]);
-                                                    
+
                                                     foreach (var item2 in StigmataList)
                                                     {
                                                         ret_Text += $"{item2}\n";
@@ -305,8 +300,7 @@ namespace BH3rdGacha.GachaHelper
                                                 }
                                                 catch (Exception ex)
                                                 {
-                                                    //TODO: Fix Implemented Methods
-                                                    MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                                    QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                                                 }
                                             }
                                         }
@@ -315,8 +309,7 @@ namespace BH3rdGacha.GachaHelper
                             }
                             catch (Exception ex)
                             {
-                                //TODO: Fix Implemented Methods
-                                MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                             }
                         }
                         else if (title.Contains("扩充"))
@@ -352,9 +345,9 @@ namespace BH3rdGacha.GachaHelper
                                     KC.Add(item);
                                 }
                                 if (KC.Count <= 2)
-                                { 
+                                {
                                     var kuochong = rootnode.SelectSingleNode($"p[2]");
-                                    foreach(var item in GetUpStaff(kuochong.InnerText))
+                                    foreach (var item in GetUpStaff(kuochong.InnerText))
                                     {
                                         if (!KC.Contains(item))
                                         {
@@ -368,7 +361,7 @@ namespace BH3rdGacha.GachaHelper
                                 foreach (var item in res.data.item_list)
                                 {
                                     item.itemstring = item.itemstring.Replace(":", "·");
-                                    string path = Path.Combine($@"{MainSave.AppDirectory}\装备卡\角色卡\", $"{item.itemstring}.png");                                    
+                                    string path = Path.Combine($@"{MainSave.AppDirectory}\装备卡\角色卡\", $"{item.itemstring}.png");
                                     if (File.Exists(path))
                                     {
                                         ret_Text += $"{item.itemstring}\n";
@@ -392,8 +385,7 @@ namespace BH3rdGacha.GachaHelper
                             }
                             catch (Exception ex)
                             {
-                                //TODO: Fix Implemented Methods
-                                MessageBox.Show("崩坏三公告获取", ex.Message + " " + ex.StackTrace + "\n");
+                                QMLog.CurrentApi.Info("崩坏三公告获取" + ex.Message + " " + ex.StackTrace + "\n");
                             }
                         }
                         //目前只支持寻找一次
@@ -404,8 +396,7 @@ namespace BH3rdGacha.GachaHelper
             }
             catch (Exception exc)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("崩坏三公告获取", exc.Message);
+                QMLog.CurrentApi.Info("崩坏三公告获取" + exc.Message);
                 return null;
             }
         }
@@ -443,7 +434,7 @@ namespace BH3rdGacha.GachaHelper
         public List<string> GetItem(string str)
         {
             str = HttpUtility.HtmlDecode(str);
-            str = str.Replace("：", ":").Replace(" ", "").Replace("｜","|").Replace("(","（").Replace(")","）");
+            str = str.Replace("：", ":").Replace(" ", "").Replace("｜", "|").Replace("(", "（").Replace(")", "）");
             str = str.Substring(str.IndexOf(":") + 1).Trim();
             str = Regex.Replace(str, "（.*）", "");
             if (str.Contains("|"))

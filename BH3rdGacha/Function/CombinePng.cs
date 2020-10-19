@@ -7,12 +7,9 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Threading;
-using System.Windows.Forms;
-using Native.Tool.IniConfig;
 using QQMini.PluginSDK.Core;
 using QQMini.PluginSDK.Core.Model;
 using SaveInfos;
-using SQLHelper.Models;
 
 namespace BH3rdGacha.GachaHelper
 {
@@ -48,8 +45,7 @@ namespace BH3rdGacha.GachaHelper
             }
             catch (Exception e)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("图片合成", $"发生错误，错误信息:{e.Message} map1.size={map1.Size} map2.size={map2.Size} bg.size={background.Size}");
+                QMLog.CurrentApi.Info($"图片合成，发生错误，错误信息:{e.Message} map1.size={map1.Size} map2.size={map2.Size} bg.size={background.Size}");
             }
             return bitMap;
         }
@@ -78,8 +74,7 @@ namespace BH3rdGacha.GachaHelper
             }
             catch (Exception e)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("图片合成", $"发生错误，错误信息:{e.Message} map1.size={map1.Size} map2.size={map2.Size} bg.size={background.Size}");
+                QMLog.CurrentApi.Info($"图片合成，发生错误，错误信息:{e.Message} map1.size={map1.Size} map2.size={map2.Size} bg.size={background.Size}");
             }
             return bitMap;
         }
@@ -263,8 +258,7 @@ namespace BH3rdGacha.GachaHelper
             }
             catch (Exception e)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show($"图片合成错误，错误信息{e.Message}{e.StackTrace}");
+                QMLog.CurrentApi.Info($"图片合成错误，错误信息{e.Message}{e.StackTrace}");
                 return null;
             }
         }

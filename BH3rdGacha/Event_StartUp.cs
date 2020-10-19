@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
 using Gacha.UI;
 using Native.Tool.IniConfig;
 using Native.Tool.IniConfig.Linq;
+using QQMini.PluginSDK.Core;
 using SaveInfos;
 
 namespace BH3rdGacha
@@ -27,8 +27,7 @@ namespace BH3rdGacha
 
                 if (!File.Exists($@"{MainSave.AppDirectory}装备卡\框\抽卡背景.png"))
                 {
-                    //TODO: Fix Implemented Methods
-                    MessageBox.Show("错误", "数据包未安装，插件无法运行，请仔细阅读论坛插件说明安装数据包，之后重载插件");
+                    QMLog.CurrentApi.Info("数据包未安装，插件无法运行，请仔细阅读论坛插件说明安装数据包，之后重载插件");
                 }
                 else
                 {
@@ -46,8 +45,7 @@ namespace BH3rdGacha
             }
             catch(Exception exc)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("Error", exc.Message+exc.StackTrace);
+                QMLog.CurrentApi.Info(exc.Message+exc.StackTrace);
             }
         }
         /// <summary>

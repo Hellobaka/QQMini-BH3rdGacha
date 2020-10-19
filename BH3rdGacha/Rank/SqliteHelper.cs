@@ -1,7 +1,7 @@
-﻿using SaveInfos;
+﻿using QQMini.PluginSDK.Core;
+using SaveInfos;
 using System;
 using System.Data.SQLite;
-using System.Windows.Forms;
 
 namespace BH3rdGacha.Rank
 {
@@ -23,8 +23,7 @@ namespace BH3rdGacha.Rank
             }
             catch (Exception e)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("数据库关闭", $"关闭失败，错误信息:{e.Message}");
+                QMLog.CurrentApi.Info($"数据库关闭，关闭失败，错误信息:{e.Message}");
             }
             return false;
         }

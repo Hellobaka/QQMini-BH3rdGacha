@@ -2,7 +2,7 @@
 using System.Text;
 using System.Data.SQLite;
 using QQMini.PluginSDK.Core.Model;
-using System.Windows.Forms;
+using QQMini.PluginSDK.Core;
 
 namespace BH3rdGacha.Rank
 {
@@ -100,8 +100,7 @@ namespace BH3rdGacha.Rank
             catch(Exception exc)
             {
                 string str = "获取出错，错误信息见日志";
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("抽卡排行榜", $"获取出错，错误信息:{exc.Message} 在 {exc.StackTrace}");
+                QMLog.CurrentApi.Info($"抽卡排行榜，获取出错，错误信息:{exc.Message} 在 {exc.StackTrace}");
                 return str;
             }
         }

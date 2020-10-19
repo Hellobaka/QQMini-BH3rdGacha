@@ -3,9 +3,8 @@ using Native.Tool.IniConfig;
 using Native.Tool.IniConfig.Linq;
 using QQMini.PluginSDK.Core.Model;
 using System;
-using System.Windows.Forms;
 using SaveInfos;
-
+using QQMini.PluginSDK.Core;
 
 namespace BH3rdGacha.OrderFunction
 {
@@ -35,8 +34,7 @@ namespace BH3rdGacha.OrderFunction
                 if (option == "扩充" && Save.AppConfig.Object["OCR"]["app_id"].GetValueOrDefault("") == "")
                 {
                     sendText.MsgToSend.Add("参数缺失，请按照日志提示补全参数");
-                    //TODO: Fix Implemented Methods
-                    MessageBox.Show("参数缺失", $"请到插件数据 Config.ini 下OCR字段填写App_id与App_key。若没有可到插件论坛页面按照提示获取.");
+                    QMLog.CurrentApi.Info($"参数缺失，请到插件数据 Config.ini 下OCR字段填写App_id与App_key。若没有可到插件论坛页面按照提示获取.");
                     return result;
                 }
                 sendText.MsgToSend.Add("获取中……请耐心等待");

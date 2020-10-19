@@ -34,8 +34,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="QQMini.PluginSDK.Core, Version=1.0.10.1016, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\QQMini.PluginSDK.Core.1.0.10.1016-Beta\lib\net45\QQMini.PluginSDK.Core.dll</HintPath>
+    <Reference Include="QQMini.PluginSDK.Core, Version=1.0.11.1018, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\QQMini.PluginSDK.Core.1.0.11.1018-Beta\lib\net45\QQMini.PluginSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

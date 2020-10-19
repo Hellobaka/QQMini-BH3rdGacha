@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
 using Native.Tool.IniConfig;
+using QQMini.PluginSDK.Core;
 using SaveInfos;
 
 namespace BH3rdGacha.CustomPool
@@ -261,8 +261,7 @@ namespace BH3rdGacha.CustomPool
             }
             catch (Exception e)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("抽卡图片生成", $"生成错误,错误信息:{e.Message}");
+                QMLog.CurrentApi.Info($"抽卡图片生成，生成错误,错误信息:{e.Message}");
                 return null;
             }
         }       
@@ -288,8 +287,7 @@ namespace BH3rdGacha.CustomPool
             {
                 //未找到图片
                 main = Image.FromFile($@"{dir}装备卡\框\ItemEmpty #1004496.png");
-                //TODO: Fix Implemented Methods
-                MessageBox.Show($"发现图片缺失,请排查是否为命名错误 " +
+                QMLog.CurrentApi.Info($"发现图片缺失,请排查是否为命名错误 " +
                     $"输入的图片路径={pc.PicPath} 名称={pc.Name}");
                 background = CombinImage(background, main, 48, 13, 119, 172);
             }

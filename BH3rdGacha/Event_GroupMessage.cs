@@ -1,7 +1,7 @@
 ﻿using System;
 using QQMini.PluginSDK.Core.Model;
-using System.Windows.Forms;
 using SaveInfos;
+using QQMini.PluginSDK.Core;
 
 namespace BH3rdGacha
 {
@@ -27,8 +27,7 @@ namespace BH3rdGacha
             }
             catch (Exception exc)
             {
-                //TODO: Fix Implemented Methods
-                MessageBox.Show("Error", exc.Message + exc.StackTrace);
+                QMLog.CurrentApi.Info(exc.Message + exc.StackTrace);
                 return result;
             }
         }
