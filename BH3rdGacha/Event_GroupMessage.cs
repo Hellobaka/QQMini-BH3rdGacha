@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using QQMini.PluginSDK.Core.Model;
 using SaveInfos;
 using QQMini.PluginSDK.Core;
@@ -14,15 +15,12 @@ namespace BH3rdGacha
                 SendFlag = false
             };
             try
-            {                
-                foreach (var item in MainSave.Instances)
+            {
+                foreach (var item in MainSave.Instances.Where(item => item.Judge(e.Message.Text)))
                 {
-                    if (!item.Judge(e.Message.Text))
-                    {
-                        continue;
-                    }
                     return item.Progress(e);
                 }
+
                 return result;
             }
             catch (Exception exc)
