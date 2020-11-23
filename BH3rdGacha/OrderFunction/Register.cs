@@ -22,7 +22,8 @@ namespace BH3rdGacha.OrderFunction
                 SendFlag = true
             };
             SendText sendText = new SendText();
-            sendText.SendID = e.FromGroup.Id;result.SendObject.Add(sendText);
+            sendText.SendID = e.FromGroup.Id;
+            result.SendObject.Add(sendText);
 
             bool exist = SQLHelper.IDExist(e);            
             if (!exist)
@@ -30,12 +31,12 @@ namespace BH3rdGacha.OrderFunction
                 SQLHelper.Register(e);
                 Random rd = new Random();
                 int diamond = SQLHelper.GetDiamond(e);
-                sendText.MsgToSend.Add(PublicArgs.register.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]")
+                sendText.MsgToSend.Add(PublicArgs.register.Replace("<@>", $"[@{e.FromQQ.Id}]")
                     .Replace("<#>", diamond.ToString()));
             }
             else
             {
-                sendText.MsgToSend.Add(PublicArgs.mutiRegister.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                sendText.MsgToSend.Add(PublicArgs.mutiRegister.Replace("<@>", $"[@{e.FromQQ.Id}]"));
             }
             return result;
         }

@@ -278,7 +278,7 @@ namespace Gacha.UI
             }
             MainSave.AppConfig.Save();
 
-            path = Path.Combine(MainSave.AppDirectory, "Config.MainSave.AppConfig");
+            path = Path.Combine(MainSave.AppDirectory, "Config.ini");
             MainSave.AppConfig = new IniConfig(path);
             MainSave.AppConfig.Load();
             MainSave.AppConfig.Object["群控"]["Count"] = new IValue(listBox_Group.Items.Count.ToString());
@@ -291,7 +291,7 @@ namespace Gacha.UI
             if (listBox_Group.SelectedIndex >= 0)
             {
                 string groupid = listBox_Group.Items[listBox_Group.SelectedIndex].ToString();
-                path = $@"{MainSave.AppDirectory}\Config.MainSave.AppConfig";
+                path = $@"{MainSave.AppDirectory}\Config.ini";
                 MainSave.AppConfig.Object[groupid]["Count"] = new IValue(listBox_Admin.Items.Count.ToString());
                 for (int i = 0; i < listBox_Admin.Items.Count; i++)
                 {

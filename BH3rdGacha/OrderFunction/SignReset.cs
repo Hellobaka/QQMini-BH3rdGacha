@@ -44,22 +44,22 @@ namespace BH3rdGacha.OrderFunction
                 switch (rd.Next(0, 6))
                 {
                     case 0:
-                        sendText.MsgToSend.Add(PublicArgs. reset1.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs. reset1.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                     case 1:
-                        sendText.MsgToSend.Add(PublicArgs. reset2.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs. reset2.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                     case 2:
-                        sendText.MsgToSend.Add(PublicArgs.reset3.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs.reset3.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                     case 3:
-                        sendText.MsgToSend.Add(PublicArgs. reset4.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs. reset4.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                     case 4:
-                        sendText.MsgToSend.Add(PublicArgs. reset5.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs. reset5.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                     case 5:
-                        sendText.MsgToSend.Add(PublicArgs.reset6.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                        sendText.MsgToSend.Add(PublicArgs.reset6.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                         break;
                 }
             }

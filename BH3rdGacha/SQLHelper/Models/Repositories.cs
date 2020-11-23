@@ -10,12 +10,10 @@ namespace SQLHelper.Models
         /// <summary>
         /// QQ隶属的群号
         /// </summary>
-        [SugarColumn(IsPrimaryKey = true, IsNullable = false)]
         public long fromgroup { get; set; }
         /// <summary>
         /// 用户QQ号
         /// </summary>
-        [SugarColumn(IsPrimaryKey = true, IsNullable = false)]
         public long qq { get; set; }
         /// <summary>
         /// 项目类型（武器、圣痕等）

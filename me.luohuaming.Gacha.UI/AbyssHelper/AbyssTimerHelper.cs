@@ -25,7 +25,7 @@ namespace Gacha.UI
             remindTimer.Interval = Convert.ToDouble(ini.Object["ExtraConfig"]["TimerInterval"].GetValueOrDefault("20"))*1000;
             remindTimer.Elapsed += RemindTimer_Elapsed;
             if (abyssTimers.Count != 0) 
-            { 
+            {
                 remindTimer.Start();
                 QMLog.CurrentApi.Info($"深渊提醒助手，定时生效,周期{remindTimer.Interval/1000}秒");
             }                

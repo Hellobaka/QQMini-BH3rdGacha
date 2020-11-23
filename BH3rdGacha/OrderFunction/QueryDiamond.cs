@@ -28,11 +28,11 @@ namespace BH3rdGacha.OrderFunction
             bool exist = SQLHelper.IDExist(e);
             if (!exist)
             {
-                sendText.MsgToSend.Add(PublicArgs.noReg.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                sendText.MsgToSend.Add(PublicArgs.noReg.Replace("<@>", $"[@{e.FromQQ.Id}]"));
                 return result;
             }
             int diamond = SQLHelper.GetDiamond(e);
-            sendText.MsgToSend.Add(PublicArgs.queryDiamond.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]")
+            sendText.MsgToSend.Add(PublicArgs.queryDiamond.Replace("<@>", $"[@{e.FromQQ.Id}]")
                 .Replace("<#>", diamond.ToString()));
             return result;
         }

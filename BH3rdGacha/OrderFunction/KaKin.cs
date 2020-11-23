@@ -38,7 +38,7 @@ namespace BH3rdGacha.OrderFunction
             string[] temp = e.Message.Text.Split(' ');
             if (temp.Length != 3)
             {
-                sendText.MsgToSend.Add($"[CQ:at,qq={e.FromQQ.Id}] 输入的格式不正确！" +
+                sendText.MsgToSend.Add($"[@{e.FromQQ.Id}] 输入的格式不正确！" +
                     $"请按照 #氪金 目标QQ号或者at目标 数量 的格式填写");
                 return result;
             }
@@ -46,7 +46,7 @@ namespace BH3rdGacha.OrderFunction
             {
                 try
                 {
-                    long targetId = Convert.ToInt64(temp[1].Replace("[CQ:at,qq=", "").Replace("]", ""));
+                    long targetId = Convert.ToInt64(temp[1].Replace("[@", "").Replace("]", ""));
                     int countdia = Convert.ToInt32(temp[2]);
                     try
                     {
@@ -56,7 +56,7 @@ namespace BH3rdGacha.OrderFunction
                             return result;
                         }
                         SQLHelper.AddDiamond(e.FromGroup.Id, targetId, countdia);
-                        sendText.MsgToSend.Add($"操作成功,为[CQ:at,qq={targetId}]充值{countdia}水晶" +
+                        sendText.MsgToSend.Add($"操作成功,为[@{targetId}]充值{countdia}水晶" +
                             $",剩余{SQLHelper.GetDiamond(e.FromGroup.Id, targetId)}水晶");
                         return result;
                     }
@@ -68,7 +68,7 @@ namespace BH3rdGacha.OrderFunction
                 }
                 catch
                 {
-                    sendText.MsgToSend.Add($"[CQ:at,qq={e.FromQQ.Id}] 输入的格式不正确！" +
+                    sendText.MsgToSend.Add($"[@{e.FromQQ.Id}] 输入的格式不正确！" +
                         $"请按照格式输入纯数字");
                     return result;
                 }

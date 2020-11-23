@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace BH3rdGacha.GachaHelper
 {
     public class GachaResult
@@ -37,6 +39,10 @@ namespace BH3rdGacha.GachaHelper
         public int evaluation;
         public bool isnew;
         public bool CanbeFold;
+        public override string ToString()
+        {
+            return $"{name} {count}个 价值:{value}";
+        }
     }
 
 }

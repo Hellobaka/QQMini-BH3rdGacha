@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 using Gacha.UI;
 using Native.Tool.IniConfig;
 using Native.Tool.IniConfig.Linq;
@@ -17,6 +18,12 @@ namespace BH3rdGacha
                 IniConfig ini;
                 ini = new IniConfig(Path.Combine(MainSave.AppDirectory,"Config.ini"));
                 ini.Load();
+                if (ini == null || ini.Object.Count == 0)
+                {
+                    ini.Object["OCR"].Add("app_id", "");
+                    ini.Object["OCR"].Add("app_key", "");
+                    ini.Save();
+                }
                 string temp = ini.Object["OCR"]["app_id"].GetValueOrDefault("");
                 if (temp == "")
                 {
@@ -31,13 +38,10 @@ namespace BH3rdGacha
                 }
                 else
                 {
+                    SQLHelper.Init(Path.Combine(MainSave.AppDirectory, "data.db"));
                     if (!File.Exists(Path.Combine(MainSave.AppDirectory, "data.db")))
                     {
                         SQLHelper.CreateDB();
-                    }
-                    else
-                    {
-                        SQLHelper.Init(Path.Combine(MainSave.AppDirectory, "data.db"));
                     }
                 }
                 AbyssTimerHelper.Start();
@@ -129,14 +133,14 @@ namespace BH3rdGacha
             PublicArgs.reset6 = Save.AppConfig.Object["Answer"]["Reset6"]
                 .GetValueOrDefault("希儿到处找不到鸭子，里人格暴走，把甲板弄脏了，大家又得打扫一遍").Replace("\\n", "\n");
 
-            PublicArgs.registermin = Convert.ToInt32(Save.AppConfig.Object["GetDiamond"]["RegisterMin"]
-                .GetValueOrDefault("0"));
-            PublicArgs.registermax = Convert.ToInt32(Save.AppConfig.Object["GetDiamond"]["RegisterMax"]
-                .GetValueOrDefault("14000"));
-            PublicArgs.signmin = Convert.ToInt32(Save.AppConfig.Object["GetDiamond"]["SignMin"]
-                .GetValueOrDefault("0"));
-            PublicArgs.signmax = Convert.ToInt32(Save.AppConfig.Object["GetDiamond"]["SignMax"]
-                .GetValueOrDefault("14000"));
+            PublicArgs.registermin = Save.AppConfig.Object["GetDiamond"]["RegisterMin"]
+                .GetValueOrDefault(0);
+            PublicArgs.registermax = Save.AppConfig.Object["GetDiamond"]["RegisterMax"]
+                .GetValueOrDefault(14000);
+            PublicArgs.signmin = Save.AppConfig.Object["GetDiamond"]["SignMin"]
+                .GetValueOrDefault(0);
+            PublicArgs.signmax = Save.AppConfig.Object["GetDiamond"]["SignMax"]
+                .GetValueOrDefault(14000);
         }
     }
 }

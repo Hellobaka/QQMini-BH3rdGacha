@@ -52,8 +52,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="QQMini.PluginSDK.Core, Version=1.0.15.1021, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\QQMini.PluginSDK.Core.1.0.15.1021-Beta\lib\net45\QQMini.PluginSDK.Core.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QQMini.PluginSDK.Core, Version=1.0.19.1120, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\QQMini.PluginSDK.Core.1.0.19.1120-Beta\lib\net45\QQMini.PluginSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

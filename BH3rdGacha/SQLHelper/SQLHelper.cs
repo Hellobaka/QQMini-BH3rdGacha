@@ -63,7 +63,8 @@ namespace BH3rdGacha
                 {
                     var query = db.Queryable<UserData>().Where(x => x.fromgroup == GroupID).ToList();
                     query.ForEach(x => x.timestamp = 0);
-                    db.Updateable(query).ExecuteCommand();
+                    db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                            .ExecuteCommand();
                 });
             }
         }
@@ -88,7 +89,7 @@ namespace BH3rdGacha
                         qq = QQ,
                         timestamp = 0,
                         sign = 0,
-                        diamond = 0,
+                        diamond = new Random().Next(PublicArgs.registermin, PublicArgs.registermax),
                         total_diamond = 0,
                         gacha_count = 0,
                         purple_count = 0,
@@ -173,7 +174,8 @@ namespace BH3rdGacha
                 {
                     var query = GetUser(GroupID, QQ, db);
                     query.diamond -= num;
-                    db.Updateable(query).ExecuteCommand();
+                    db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                .ExecuteCommand();
                     return query.diamond.GetValueOrDefault(0);
                 });
                 if (result.IsSuccess)
@@ -203,7 +205,8 @@ namespace BH3rdGacha
                 {
                     var query = GetUser(GroupID, QQ, db);
                     query.diamond += num;
-                    db.Updateable(query).ExecuteCommand();
+                    db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                .ExecuteCommand();
                     return query.diamond.GetValueOrDefault(0);
                 });
                 if (result.IsSuccess)
@@ -232,7 +235,8 @@ namespace BH3rdGacha
                 {
                     var query = GetUser(GroupID, QQ, db);
                     query.gacha_count += num;
-                    db.Updateable(query).ExecuteCommand();
+                    db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                .ExecuteCommand();
                 });
             }
         }
@@ -254,7 +258,8 @@ namespace BH3rdGacha
                 {
                     var query = GetUser(GroupID, QQ, db);
                     query.sign_count += num;
-                    db.Updateable(query).ExecuteCommand();
+                    db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                .ExecuteCommand();
                 });
             }
         }
@@ -274,13 +279,15 @@ namespace BH3rdGacha
                     DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
                     TimeSpan toNow = new TimeSpan(timestamp * 10000000);
                     DateTime targetDt = dtStart.Add(toNow);
-                    if (targetDt.Day != DateTime.Now.Day)
+                    if (targetDt.Day != DateTime.Now.Day && targetDt.Year!=DateTime.Now.Year 
+                            && targetDt.Month!=DateTime.Now.Month)
                     {
                         Random rd = new Random();
-                        query.timestamp = 0;
+                        query.timestamp = MainSave.GetTimeStamp();
                         query.diamond += rd.Next(PublicArgs.signmin, PublicArgs.signmax);
                         query.sign_count++;
-                        db.Updateable(query).ExecuteCommand();
+                        db.Updateable(query).WhereColumns(x=>x.qq).WhereColumns(x=>x.fromgroup)
+                                .ExecuteCommand();
                         return query.diamond.GetValueOrDefault(0);
                     }
                     return -1;
@@ -324,6 +331,10 @@ namespace BH3rdGacha
                             count = item.count,
                             date = DateTime.Now.ToString()
                         };
+                        if(newItem.class_==null)
+                        {
+                            newItem.class_ = "";
+                        }
                         if (item.CanbeFold)
                         {
                             var query = db.Queryable<Repositories>().First(x => x.fromgroup == GroupID
@@ -332,16 +343,18 @@ namespace BH3rdGacha
                             {
                                 query.count += item.count;
                                 query.date = DateTime.Now.ToString();
-                                db.Updateable(query).ExecuteCommandAsync();
+                                db.Updateable(query).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                            .ExecuteCommand();
                             }
                             else
                             {
-                                db.Updateable(newItem).ExecuteCommandAsync();
+                                db.Updateable(newItem).WhereColumns(x => x.qq).WhereColumns(x => x.fromgroup)
+                                            .ExecuteCommand();
                             }
                         }
                         else
                         {
-                            db.Insertable(newItem).ExecuteCommandAsync();
+                            db.Insertable(newItem).ExecuteCommand();
                         }
                     }
                 });
@@ -351,7 +364,7 @@ namespace BH3rdGacha
         {
             using (var db = GetInstance())
             {
-                db.DbMaintenance.CreateDatabase();
+                db.DbMaintenance.CreateDatabase(DBPath);                
                 db.CodeFirst.InitTables(typeof(UserData));
                 db.CodeFirst.InitTables(typeof(Repositories));
             }

@@ -16,9 +16,9 @@ namespace BH3rdGacha
         public override PluginInfo PluginInfo => new PluginInfo
         {
             Author = "Mr.喜",
-            Description = "水银抽卡机",
+            Description = "崩坏三图片抽卡",
             DeveloperKey = "ABC123",
-            Name = "崩坏三图片抽卡",
+            Name = "水银抽卡机",
             Version = new Version(1, 4, 0),
             SDKVersion = 3,
             PackageId = "me.luohuaming.BH3Gacha",
@@ -28,7 +28,7 @@ namespace BH3rdGacha
             MainSave.AppDirectory = Path.Combine(Environment.CurrentDirectory, "Data"
                 , PluginInfo.PackageId.ToLower()) + "\\";
             MainSave.ImageDirectory = Path.Combine(Environment.CurrentDirectory, "Image") + "\\";
-            if(!Directory.Exists(MainSave.ImageDirectory))
+            if (!Directory.Exists(MainSave.ImageDirectory))
             {
                 Directory.CreateDirectory(MainSave.ImageDirectory);
             }
@@ -42,17 +42,34 @@ namespace BH3rdGacha
         }
         public override QMEventHandlerTypes OnReceiveGroupMessage(QMGroupMessageEventArgs e)
         {
-            FunctionResult result = Event_GroupMessage.GroupMessage(e);
-            if (result.SendFlag)
+            Save.RobotQQ = e.RobotQQ;
+            if (MainSave.AppConfig.Object["接口"]["Group"].GetValueOrDefault(0) is 0)
             {
-                if(result.SendObject==null)
+                bool flag = false;
+                for (int i = 0; i < MainSave.AppConfig.Object["群控"]["Count"].GetValueOrDefault(0); i++)
+                {
+                    if (e.FromGroup.Id == MainSave.AppConfig.Object["群控"][$"Item{i}"].GetValueOrDefault(0))
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag is false)
                 {
                     return QMEventHandlerTypes.Continue;
                 }
-                foreach(var item in result.SendObject)
+            }
+            FunctionResult result = Event_GroupMessage.GroupMessage(e);
+            if (result.SendFlag)
+            {
+                if (result.SendObject == null)
+                {
+                    return QMEventHandlerTypes.Continue;
+                }
+                foreach (var item in result.SendObject)
                 {
                     Group DestGroup = new Group(item.SendID);
-                    foreach(var sendMsg in item.MsgToSend)
+                    foreach (var sendMsg in item.MsgToSend)
                     {
                         QMApi.SendGroupMessage(e.RobotQQ, DestGroup, sendMsg);
                     }
@@ -68,6 +85,10 @@ namespace BH3rdGacha
         }
         public override QMEventHandlerTypes OnReceiveFriendMessage(QMPrivateMessageEventArgs e)
         {
+            if (MainSave.AppConfig.Object["接口"]["Private"].GetValueOrDefault(0) is 0)
+            {
+                return QMEventHandlerTypes.Continue;
+            }
             FunctionResult result = new FunctionResult();
             if (result.SendFlag)
             {
@@ -111,5 +132,5 @@ namespace BH3rdGacha
             };
             return Instance;
         }
-    }    
+    }
 }

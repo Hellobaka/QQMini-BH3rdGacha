@@ -46,7 +46,7 @@ namespace BH3rdGacha.OrderFunction
             }
             catch (Exception err)
             {
-                sendText.MsgToSend.Add($"[CQ:at,qq={e.FromQQ.Id}]执行失败:\n{err.Message}");
+                sendText.MsgToSend.Add($"[@{e.FromQQ.Id}]执行失败:\n{err.Message}");
             }
             return result;
         }

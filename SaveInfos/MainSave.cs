@@ -4,6 +4,7 @@ using QQMini.PluginSDK.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace SaveInfos
 {
@@ -27,6 +28,28 @@ namespace SaveInfos
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
             rng.GetBytes(bytes);
             return BitConverter.ToInt32(bytes, 0);
+        }
+        //获取时间戳
+        public static long GetTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds);
+        }
+        //MD5
+        public static string GetMD5(string str)
+        {
+            using (MD5 mi = MD5.Create())
+            {
+                byte[] buffer = Encoding.Default.GetBytes(str);
+                //开始加密
+                byte[] newBuffer = mi.ComputeHash(buffer);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < newBuffer.Length; i++)
+                {
+                    sb.Append(newBuffer[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
         }
     }
 }

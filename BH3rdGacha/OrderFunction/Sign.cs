@@ -35,14 +35,14 @@ namespace BH3rdGacha.OrderFunction
             SQLHelper.AddCount_Sign(e,1);
             if (diamond >= 0)
             {
-                sendText.MsgToSend.Add(PublicArgs.sign1.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]")
+                sendText.MsgToSend.Add(PublicArgs.sign1.Replace("<@>", $"[@{e.FromQQ.Id}]")
                     .Replace("<#>", diamond.ToString()));
-                sendText.MsgToSend.Add(PublicArgs.sign2.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]")
+                sendText.MsgToSend.Add(PublicArgs.sign2.Replace("<@>", $"[@{e.FromQQ.Id}]")
                     .Replace("<#>", diamond.ToString()));
             }
             else
             {
-                sendText.MsgToSend.Add(PublicArgs.mutiSign.Replace("<@>", $"[CQ:at,qq={e.FromQQ.Id}]")
+                sendText.MsgToSend.Add(PublicArgs.mutiSign.Replace("<@>", $"[@{e.FromQQ.Id}]")
                     .Replace("<#>", diamond.ToString()));
             }
             return result;

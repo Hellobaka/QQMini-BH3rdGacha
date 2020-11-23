@@ -125,18 +125,18 @@ namespace BH3rdGacha.CustomPool
             if (!SQLHelper.IDExist(e))
             { 
                 QMApi.CurrentApi.SendGroupMessage(e.RobotQQ,e.FromGroup,PublicArgs.noReg.Replace
-                    ("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                    ("<@>", $"[@{e.FromQQ.Id}]"));
                 return false; 
             }
             int diamond = SQLHelper.GetDiamond(e);
             if (diamond < count * poolInfo.PerGachaConsumption)
             {
                 QMApi.CurrentApi.SendGroupMessage(e.RobotQQ, e.FromGroup, PublicArgs.lowDiamond.Replace
-                    ("<@>", $"[CQ:at,qq={e.FromQQ.Id}]").Replace("<#>", diamond.ToString()));
+                    ("<@>", $"[@{e.FromQQ.Id}]").Replace("<#>", diamond.ToString()));
                 return false;
             }
             QMApi.CurrentApi.SendGroupMessage(e.RobotQQ, e.FromGroup, PublicArgs.BP10.Replace
-                ("<@>", $"[CQ:at,qq={e.FromQQ.Id}]"));
+                ("<@>", $"[@{e.FromQQ.Id}]"));
             return true;
         }
         /// <summary>
