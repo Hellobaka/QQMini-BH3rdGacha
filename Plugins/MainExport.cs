@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using BH3rdGacha.OrderFunction;
 using Gacha.UI;
@@ -37,12 +38,19 @@ namespace BH3rdGacha
             MainSave.AppConfig.Load();
             Save.AppConfig = MainSave.AppConfig;
             MainSave.AppInfo = PluginInfo;
-            Event_StartUp.Init();
-            Event_StartUp.ReadConfig();
+            Thread s = new Thread(()=>
+            {
+                while (QMApiV2.GetFrameAllOnlineQQ().Count == 0)
+                {
+                    Thread.Sleep(500);
+                }
+                MainSave.RobotQQ = QMApiV2.GetFrameAllOnlineQQ()[0].Id;
+                Event_StartUp.Init();
+                Event_StartUp.ReadConfig();
+            });s.Start();
         }
         public override QMEventHandlerTypes OnReceiveGroupMessage(QMGroupMessageEventArgs e)
         {
-            Save.RobotQQ = e.RobotQQ;
             if (MainSave.AppConfig.Object["接口"]["Group"].GetValueOrDefault(0) is 0)
             {
                 bool flag = false;

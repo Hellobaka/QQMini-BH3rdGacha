@@ -354,7 +354,7 @@ namespace BH3rdGacha.GachaHelper
             {
                 main = Image.FromFile($@"{MainSave.AppDirectory}装备卡\框\ItemEmpty #1004496.png");
                 background = CombinImage(background, main, 48, 13, 119, 172);
-                QMApi.CurrentApi.SendGroupMessage(Save.RobotQQ, new Group(GroupID)
+                QMApi.CurrentApi.SendGroupMessage(MainSave.RobotQQ, new Group(GroupID)
                     , $"发现图片缺失,请排查是否为命名错误 type={gr.type} name={gr.name}");
             }
 

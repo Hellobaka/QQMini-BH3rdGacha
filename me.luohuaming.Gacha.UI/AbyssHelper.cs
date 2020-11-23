@@ -1,5 +1,6 @@
 ﻿using Native.Tool.IniConfig;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using QQMini.PluginSDK.Core;
 using SaveInfos;
 using System;
@@ -29,12 +30,12 @@ namespace Gacha.UI
         {
             if (QMApi.CurrentApi != null)
             {
-                //TODO: Fix Implemented Methods
-                //foreach (var item in MainQMApi.CurrentApi.GetGroupList())
-                //{
-                //    grouplist.Add(item.Group.Id);
-                //    checkedListBox_Group.Items.Add($"{item.Name}({item.Group.Id})");
-                //}
+                var group = QMApiV2.GetGroupList(MainSave.RobotQQ);
+                foreach (var item in (JArray)group["join"])
+                {
+                    grouplist.Add(Convert.ToInt64(item["gc"].ToString()));
+                    checkedListBox_Group.Items.Add($"{item["gn"]}({item["gc"]})");
+                }
             }
             else
             {
